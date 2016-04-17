@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 from flask.ext.wtf import Form
 from wtforms import StringField, SubmitField,TextAreaField,SelectField
 from flask.ext.pagedown.fields import PageDownField

@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -10,7 +11,7 @@ class Config:
     ADMIN = "sailaer"
     ADMIN_2 = '月的傲娇'
     FLASKY_COMMENTS_PER_PAGE = 10
-    KINDS = [('csapp', 'CSAPP'), ('lisp', 'LISP'), ('acm', '算法导论'), ('every', '杂记'),('program','编程相关'),('lrc', '填词')]
+
 
 
     @staticmethod

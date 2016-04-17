@@ -1,0 +1,32 @@
+<ul class="comments" xmlns="http://www.w3.org/1999/html">
+    {% for comment in comments %}
+        <li class="comment">
+            {% if comment.name == 'sailaer'%}
+                <div class="comment-thumbnail">
+                    <img class="img-circle" src={{url_for('static', filename='admin.png')}} width = '40' height = '40'>
+                </div>
+            {% else %}
+                <div class="comment-thumbnail">
+                    <img class="img-circle" src={{ url_for('static', filename='guest.png') }} width = '40' height = '40'>
+                </div>
+
+            {% endif %}
+            <div class="comment-content">
+                <div class="comment-date">{{ moment(comment.timestamp).fromNow() }}</div>
+                <div class="comment-author">{{ comment.name }}</div>
+                <div class="comment-body">
+                    {% if comment.body_html %}
+                        {{ comment.body_html | safe }}
+                    {% else %}
+                        {{ comment.body }}
+                    {% endif %}
+                </div>
+                {% if current_user.administrator%}
+                    <a href="{{ url_for('.deleteComment', id = comment.id) }}">
+                        <button class="btn btn-danger" type="submit">删除</button>
+                    </a>
+                {% endif %}
+            </div>
+        </li>
+    {% endfor %}
+</ul>

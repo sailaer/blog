@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html>
+ <meta charset="UTF-8">
+<html lang="zh-cn">
+ <meta charset="UTF-8">
 <head>
-    <meta charset="utf-8" />
+   <meta charset="UTF-8">
+
+
+
     {% extends "bootstrap/base.html" %}
+     <meta charset="UTF-8">
     {% block title %}sailaer{% endblock %}
+
 
     {% block head %}
         {{ super() }}
@@ -12,6 +19,7 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
     {% endblock %}
 </head>
+
 <body>
 {% block navbar %}
     <div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
@@ -60,10 +68,11 @@
         {% block page_content %}{% endblock %}
     </div>
 {% endblock %}
-</body>
-</html>
+
 
 {% block scripts %}
     {{ super() }}
     {{ moment.include_moment() }}
 {% endblock %}
+</body>
+</html>

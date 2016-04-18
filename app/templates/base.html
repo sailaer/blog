@@ -1,24 +1,22 @@
-<!DOCTYPE html>
- <meta charset="UTF-8">
-<html lang="zh-cn">
- <meta charset="UTF-8">
-<head>
-   <meta charset="UTF-8">
+{% extends "bootstrap/base.html" %}
+{% block title %}sailaer{% endblock %}
+{% block head %}
+    {{ super() }}
+    {% block metas %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    {% endblock%}
 
+    <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='bootstrap.min.css')}}">
 
+    <link rel="shortcut icon" href="{{ url_for('static', filename='admin.png') }}" type="image/x-png">
+    <link rel="icon" href="{{ url_for('static', filename='admin.png') }}" type="image/x-png">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 
-    {% extends "bootstrap/base.html" %}
-     <meta charset="UTF-8">
-    {% block title %}sailaer{% endblock %}
+{% endblock %}
 
-
-    {% block head %}
-        {{ super() }}
-        <link rel="shortcut icon" href="{{ url_for('static', filename='admin.png') }}" type="image/x-png">
-        <link rel="icon" href="{{ url_for('static', filename='admin.png') }}" type="image/x-png">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-    {% endblock %}
-</head>
 
 <body>
 {% block navbar %}

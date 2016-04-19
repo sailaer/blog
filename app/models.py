@@ -85,9 +85,9 @@ class Post(db.Model):
         allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
                         'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
                         'h1', 'h2', 'h3', 'p', 'img']
-        target.body_html = bleach.linkify(
+        target.body_html = bleach.linkify(bleach.clean(
             markdown(value, output_format='html'),
-        )
+            tags=allowed_tags, strip=True))
 
 db.event.listen(Post.body, 'set', Post.on_changed_body)
 
@@ -103,12 +103,11 @@ class Comment(db.Model):
 
     @staticmethod
     def on_changed_body(target, value, oldvalue, initiator):
-        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
-                        'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
-                        'h1', 'h2', 'h3', 'img']
-        target.body_html = bleach.linkify(
+        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'code', 'em', 'i',
+                        'strong']
+        target.body_html = bleach.linkify(bleach.clean(
             markdown(value, output_format='html'),
-        )
+            tags=allowed_tags, strip=True))
 
 
 db.event.listen(Comment.body, 'set', Comment.on_changed_body)

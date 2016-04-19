@@ -6,7 +6,7 @@ from wtforms.validators import Required
 from .. import config
 
 class PostForm(Form):
-    kind = SelectField(u'kind', choices = [('csapp', 'CSAPP'), ('lisp', 'LISP'), ('acm', '算法导论'), ('杂记', '杂记'),('编程相关','编程相关'),('填词', '填词')] )
+    kind = SelectField(u'kind', choices = [('CSAPP', 'CSAPP'), ('LISP', 'LISP'), ('算法导论', '算法导论'), ('杂记', '杂记'),('编程相关','编程相关'),('填词', '填词')] )
     body = PageDownField("What's on your mind?", validators=[Required()])
     submit = SubmitField('发表')
 

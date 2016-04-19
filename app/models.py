@@ -69,12 +69,13 @@ login_manager.anonymous_user = AnonymousUser
 class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
-    kind =db.Column(db.Text,default = '未分类')
+    kind = db.Column(db.Text)
     body = db.Column(db.Text)
     body_html = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comments = db.relationship('Comment', backref = 'post', lazy ='dynamic')
+    #kinds = db.relationship('Kind', backref='post', lazy='dynamic')
 
 
 
@@ -111,5 +112,13 @@ class Comment(db.Model):
 
 
 db.event.listen(Comment.body, 'set', Comment.on_changed_body)
+
+''''
+class Kind(db.Model):
+    __tablename__ = 'kinds'
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.Text, default='未分类')
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+'''''
 
 

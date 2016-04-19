@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-from flask import render_template, redirect, url_for, abort, flash, request,\
+from flask import render_template, redirect, url_for, abort, flash, request, \
     current_app
 from . import main
 from .forms import PostForm,CommentForm
@@ -23,6 +23,7 @@ def index():
         page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
         error_out=False)
     posts = pagination.items
+
     return render_template('index.html', form=form, posts=posts,
                            pagination=pagination)
 
@@ -59,7 +60,7 @@ def post(id):
     page = request.args.get('page', 1, type=int)
     if page == -1:
         page = (post.comments.count() - 1) // \
-            current_app.config['FLASKY_COMMENTS_PER_PAGE'] + 1
+               current_app.config['FLASKY_COMMENTS_PER_PAGE'] + 1
     pagination = post.comments.order_by(Comment.timestamp.desc()).paginate(
         page, per_page=current_app.config['FLASKY_COMMENTS_PER_PAGE'],
         error_out=False)
@@ -90,3 +91,25 @@ def deleteComment(id):
 def about():
     return render_template('about.html')
 
+@main.route('/kind/<kind>', methods=['GET', 'POST'])
+def kind(kind):
+    form = PostForm()
+    flash(kind)
+
+    if current_user.is_administrator and \
+            form.validate_on_submit():
+        post = Post(body=form.body.data,
+                    author=current_user._get_current_object(),
+                    kind = form.kind.data)
+        db.session.add(post)
+        return redirect(url_for('.index'))
+    page = request.args.get('page', 1, type=int)
+    #posts = Post.query.filter_by(kind = kind).all()
+
+
+    pagination = Post.query.filter_by(kind = kind).order_by(Post.timestamp.desc()).paginate(
+        page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
+        error_out=False)
+    posts = pagination.items
+    return render_template('index.html', form=form, posts=posts,
+                           pagination=pagination)

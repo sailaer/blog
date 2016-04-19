@@ -1,6 +1,8 @@
 
 部署文档
 
+使用centos7，腾讯云，其他服务器大同小异
+
 首先在服务器上安装git
 
 然后执行命令git源码服务器
@@ -42,3 +44,7 @@ python manage.py db upgrade
 
 gunicorn -b 0.0.0.0:80 manage:app
 
+成功。
+
+ps：使用netstat -antup | grep命令可以查找关闭程序。、
+    unbuntu需要sudo权限。

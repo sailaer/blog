@@ -27,6 +27,7 @@ ul.posts li.post:hover {
 }
 div.post-date {
     float: right;
+
 }
 div.post-author {
     font-weight: bold;
@@ -114,3 +115,12 @@ body {
     padding-bottom: 70px;
     margin-left: 20px;
     margin-right: 20px;}
+div.pic{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-position:center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}

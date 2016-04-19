@@ -6,13 +6,12 @@
 
 
 {% block page_content %}
-    {% include '_posts.html' %}
-    <h4 id="comments">Comments</h4>
 
-    <div class="comment-form">
+    {% include '_posts.html' %}
+    <div >
         {{ wtf.quick_form(form) }}
     </div>
-
+    <h4 id="comments">Comments</h4>
     {% include '_comments.html' %}
     {% if pagination %}
         <div class="pagination">

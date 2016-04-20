@@ -1,4 +1,4 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <ul class="posts">
     {% for post in posts %}
         <li class="post">
@@ -7,7 +7,7 @@
                 <div class="post-date"><h4>{{ moment(post.timestamp).fromNow() }}</h4></div>
 
                 <div class="post-body">
-                 <h3><span class="label label-danger">{{ post.kind }}</span></h3>
+                    <h3><span class="label label-danger">{{ post.kind }}</span></h3>
 
                     {% if post.body_html %}
                         <p>{{ post.body_html| safe}}</p>

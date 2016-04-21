@@ -31,7 +31,7 @@ source venv/bin/activate
 
 然后安装支持库
 
-pip install -r requirements.txt
+pip install --no-cache-dir -r requirements.txt
 
 解决编码问题
 Python27\Lib\site-packages下创建文件sitecustomize.py

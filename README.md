@@ -1,5 +1,5 @@
 
-部署文档
+# 部署文档
 
 使用ubuntu，腾讯云，其他服务器大同小异
 
@@ -128,9 +128,23 @@ server {
 }
 
 
+[program:my_flask]
+command=/home/ubuntu/venv/bin/uwsgi /home/ubuntu/blog/config.ini
 
+directory=/home/ubuntu/blog
+
+
+user=root
+
+autostart=true
+
+autorestart=true
+
+stdout_logfile=/home/ubuntu/blog/logs/uwsgi_supervisor.log
+~
 
 uwsgi config.ini
+
 gunicorn -b 0.0.0.0:80 manage:app
 
 成功。

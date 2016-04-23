@@ -1,12 +1,8 @@
 {% extends "bootstrap/base.html" %}
-{% block title %}月的傲娇（sailaer）的小窝{% endblock %}
+{% block title %}傲娇小窝{% endblock %}
 {% block head %}
     {{ super() }}
-    {% block metas %}
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    {% endblock%}
+
 
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='admin.png') }}" type="image/x-png">
@@ -65,7 +61,7 @@
 
 {#content#}
 {% block content %}
-<script>
+    <script>
         $('body').niceScroll({
             cursorcolor: "#000",//#CC0071 光标颜色
             cursoropacitymax: 1, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
@@ -83,7 +79,9 @@
             <div class="image_header col-lg-12">
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class="page_title">
-                           <h1></h1>
+                        <img class="img-circle" src={{url_for('static', filename='admin.jpg')}} >
+                        <br>
+                        <img class="" src={{url_for('static', filename='title.png')}} >
                     </div>
                 </div>
             </div>
@@ -114,7 +112,7 @@
     <p class="copyright text-muted text-center">
         Copyright © sailaer 2016
         <br>
-        <a href="http://115.159.215.174/">sailaer</a>
+
 
     </p>
 

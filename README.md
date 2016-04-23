@@ -84,7 +84,7 @@ server {
 
     location / {
         root   /usr/share/nginx/html;
-        index  index.html index.htm;
+       
 	include uwsgi_params;
         uwsgi_pass  127.0.0.1:8001;
 	uwsgi_param UWSGI_SCRIPT manage:app;

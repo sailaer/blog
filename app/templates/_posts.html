@@ -4,7 +4,7 @@
         <li class="post">
 
             <div class="post-content">
-                <div class="post-date"><h4>{{ moment(post.timestamp).fromNow() }}</h4></div>
+                <div class="post-date"><h6>{{ moment(post.timestamp).fromNow() }}</h6></div>
 
                 <div class="post-body">
                 <div> <h3> <a href={{ url_for('main.kind',kind = post.kind) }}><span class="label label-danger">{{ post.kind }}</span></a></h3>

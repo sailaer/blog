@@ -18,3 +18,8 @@ class CommentForm(Form):
     name = StringField('昵称：', validators=[Required()])
     body = PageDownField("评论：", validators=[Required()])
     submit = SubmitField('发表')
+
+class MForm(Form):
+
+    body = PageDownField("", validators=[Required()])
+    submit = SubmitField('留言')

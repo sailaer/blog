@@ -2,7 +2,7 @@
 from flask import render_template, redirect, url_for, abort, flash, request, \
     current_app
 from . import main
-from .forms import PostForm,CommentForm
+from .forms import PostForm,CommentForm,MForm
 from flask.ext.login import login_required, current_user
 from .. import db
 from ..models import User, Post, Comment
@@ -113,3 +113,33 @@ def kind(kind):
     posts = pagination.items
     return render_template('index.html', form=form, posts=posts,
                            pagination=pagination)
+
+@main.route('/comment', methods=['GET', 'POST'])
+def comment():
+    form = MForm()
+    if form.validate_on_submit():
+        post = Post(body=form.body.data,
+
+                    kind = '留言')
+        db.session.add(post)
+        return redirect(url_for('.comment'))
+    page = request.args.get('page', 1, type=int)
+    pagination = Post.query.filter_by(kind='留言').order_by(Post.timestamp.desc()).paginate(
+        page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
+        error_out=False)
+    posts = pagination.items
+
+    return render_template('comment.html', form=form, posts=posts,
+                           pagination=pagination)
+
+@main.route('/Allcomments', methods=['GET'])
+def Allcomments():
+
+    page = request.args.get('page', 1, type=int)
+
+    pagination = Comment.query.order_by(Comment.timestamp.desc()).paginate(
+        page, per_page=current_app.config['FLASKY_COMMENTS_PER_PAGE'],
+        error_out=False)
+    comments = pagination.items
+    return render_template('Allcomments.html',
+                        comments=comments, pagination=pagination)

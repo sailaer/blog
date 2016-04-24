@@ -22,10 +22,22 @@
 
 
 {% block navbar %}
-
-
-    <div class="navbar navbar-default navbar-opacity navbar-fixed-bottom container-fluid" role="navigation">
+    <script>
+        $('body').niceScroll({
+            cursorcolor: "#000",//#CC0071 光标颜色
+            cursoropacitymax: 1, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+            touchbehavior: true, //使光标拖动滚动像在台式电脑触摸设备
+            cursorwidth: "5px", //像素光标的宽度
+            cursorborder: "1px solid ＃FFF", //     游标边框css定义
+            cursorborderradius: "5px",//以像素为光标边界半径
+            autohidemode: false, //是否隐藏滚动条
+            mousescrollstep:80 //设置滚动速度
+        });
+    </script>
+    <div id="loading"></div>
+    <div class="navbar navbar-default navbar-opacity navbar-fixed-bottom container-fluid navbar-embossed " role="navigation">
         <div>
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -44,10 +56,12 @@
                     <li><a href="{{  url_for('main.kind', kind = "编程相关") }}">编程相关</a></li>
                     <li><a href="{{ url_for('main.kind', kind = '填词') }}">填词</a></li>
                     <li><a href="{{ url_for('main.about') }}">戳我啊QAQ</a></li>
+                    <li><a href="{{ url_for('main.comment') }}">我是一只留言板w</a></li>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_authenticated %}
+                        <li><a href="{{ url_for('main.Allcomments') }}">查看所有评论</a></li>
                         <li><a href="{{ url_for('auth.logout') }}">注销</a></li>
                     {% else %}
                         <li><a href="{{ url_for('auth.login') }}">登陆</a></li>
@@ -61,18 +75,7 @@
 
 {#content#}
 {% block content %}
-    <script>
-        $('body').niceScroll({
-            cursorcolor: "#000",//#CC0071 光标颜色
-            cursoropacitymax: 1, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
-            touchbehavior: true, //使光标拖动滚动像在台式电脑触摸设备
-            cursorwidth: "5px", //像素光标的宽度
-            cursorborder: "1px solid ＃FFF", //     游标边框css定义
-            cursorborderradius: "5px",//以像素为光标边界半径
-            autohidemode: false, //是否隐藏滚动条
-            mousescrollstep:80 //设置滚动速度
-        });
-    </script>
+
     {% block page_image %}
         <div class="container-fluid">
         <div class="row">
@@ -89,39 +92,32 @@
         <div>
     {% endblock %}
 
-    {% block page_content %}
+{% block page_content %}
 
-    {% endblock %}
+{% endblock %}
 
-    <ul class="list-inline text-center footer">
+<ul class="list-inline text-center footer">
 
 
-        <li>
-            <a target="_blank" href="https://github.com/sailaer">
+    <li>
+        <a target="_blank" href="https://github.com/sailaer">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                             </span>
-            </a>
-        </li>
+        </a>
+    </li>
 
 
 
-    </ul>
+</ul>
 
-    <p class="copyright text-muted text-center">
-        Copyright © sailaer 2016
-        <br>
+<p class="copyright text-muted text-center">
+    Copyright © sailaer 2016
+    <br>
 
 
-    </p>
-
-    {% for message in get_flashed_messages() %}
-        <div class="alert alert-warning">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            {{ message }}
-        </div>
-    {% endfor %}
+</p>
 
 
 

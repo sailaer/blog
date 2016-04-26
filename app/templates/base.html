@@ -78,46 +78,50 @@
 
     {% block page_image %}
         <div class="container-fluid">
-        <div class="row">
-            <div class="image_header col-lg-12">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="page_title">
-                        <img class="img-circle" src={{url_for('static', filename='admin.jpg')}} >
-                        <br>
-                        <img class="" src={{url_for('static', filename='title.png')}} >
+            <div class="row">
+                <div class="image_header col-lg-12">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="page_title">
+                            <img class="img-circle" src={{url_for('static', filename='admin.jpg')}} >
+                            <br>
+                            <img class="" src={{url_for('static', filename='title.png')}} >
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div>
+
+    {% endblock %}
+      <div class="container">
+
+    {% block page_content %}
+
     {% endblock %}
 
-{% block page_content %}
 
-{% endblock %}
-
-<ul class="list-inline text-center footer">
+    <ul class="list-inline text-center footer">
 
 
-    <li>
-        <a target="_blank" href="https://github.com/sailaer">
+        <li>
+            <a target="_blank" href="https://github.com/sailaer">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                             </span>
-        </a>
-    </li>
+            </a>
+        </li>
 
 
 
-</ul>
+    </ul>
 
-<p class="copyright text-muted text-center">
-    Copyright © sailaer 2016
-    <br>
+    <p class="copyright text-muted text-center">
+        Copyright © sailaer 2016
+        <br>
 
 
-</p>
+    </p>
+    </div>
 
 
 
